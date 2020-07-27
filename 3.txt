@@ -1,0 +1,38 @@
+meskalina@meskalina-VirtualBox:~$ mysqldump example > example.sql
+meskalina@meskalina-VirtualBox:~$ mysql
+
+mysql> create database if not exists sample;
+Query OK, 1 row affected (0.30 sec)
+
+mysql> \q
+Bye
+meskalina@meskalina-VirtualBox:~$ mysql sample < example.sql 
+meskalina@meskalina-VirtualBox:~$ mysql
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| example            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sample             |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use sample;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++------------------+
+| Tables_in_sample |
++------------------+
+| users            |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> 
