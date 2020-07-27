@@ -1,0 +1,126 @@
+/* способ 1 */
+
+meskalina@meskalina-VirtualBox:~$ mysqldump mysql help_keyword --where='help_keyword_id<100' > table_dump_1.sql
+
+/* способ 2 */
+
+meskalina@meskalina-VirtualBox:~$ mysql
+
+mysql> use mysql
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+mysql> show variables like 'secure-file-priv';
+Empty set (0.01 sec)
+
+mysql> select * into outfile '/var/lib/mysql-files/table_dump_2.sql' from help_keyword where help_keyword_id<100;
+Query OK, 100 rows affected (0.32 sec)
+
+mysql> \q
+Bye
+meskalina@meskalina-VirtualBox:~$ sudo cp /var/lib/mysql-files/table_dump_2.sql ~
+[sudo] пароль для meskalina: 
+meskalina@meskalina-VirtualBox:~$ sudo cat table_dump_2.sql
+0	HELP_DATE
+1	HELP_VERSION
+2	DEFAULT
+3	SERIAL
+4	VALUE
+5	HELP
+6	FALSE
+7	TRUE
+8	BOOL
+9	BOOLEAN
+10	INT1
+11	UNSIGNED
+12	ZEROFILL
+13	INT2
+14	INT3
+15	MIDDLEINT
+16	INT4
+17	INTEGER
+18	INT8
+19	DEC
+20	FIXED
+21	NUMERIC
+22	DECIMAL
+23	FLOAT4
+24	FLOAT8
+25	PRECISION
+26	REAL
+27	DATE
+28	TIMESTAMP
+29	TIME
+30	CHARACTER
+31	NATIONAL
+32	NCHAR
+33	BYTE
+34	CHAR
+35	NVARCHAR
+36	VARCHARACTER
+37	VARYING
+38	LONG
+39	LONGBINARY
+40	ADD
+41	ALTER
+42	CREATE
+43	INDEX
+44	KEY
+45	TABLE
+46	<>
+47	AND
+48	BETWEEN
+49	IS
+50	NOT
+51	NULL
+52	OR
+53	CASE
+54	ELSE
+55	END
+56	THEN
+57	WHEN
+58	IF
+59	BIGINT
+60	FLOOR
+61	MOD
+62	CEIL
+63	CEILING
+64	POW
+65	POWER
+66	DATE_ADD
+67	DATE_SUB
+68	DAY
+69	DAY_HOUR
+70	DAY_MINUTE
+71	DAY_SECOND
+72	HOUR
+73	HOUR_MINUTE
+74	HOUR_SECOND
+75	INTERVAL
+76	MINUTE
+77	MINUTE_SECOND
+78	MONTH
+79	SECOND
+80	YEAR
+81	YEAR_MONTH
+82	INSERT
+83	LIKE
+84	SOUNDS
+85	BOTH
+86	FROM
+87	LEADING
+88	TRAILING
+89	ESCAPE
+90	RLIKE
+91	REGEXP_INSTR
+92	REGEXP_LIKE
+93	REGEXP_REPLACE
+94	REGEXP_SUBSTR
+95	AGAINST
+96	EXPANSION
+97	IN
+98	MATCH
+99	MODE
+meskalina@meskalina-VirtualBox:~$ 
