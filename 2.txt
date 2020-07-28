@@ -1,0 +1,28 @@
+meskalina@meskalina-VirtualBox:~$ mysql -e 'CREATE DATABASE vk';
+meskalina@meskalina-VirtualBox:~$ mysql vk < filldb.sql
+meskalina@meskalina-VirtualBox:~$ mysql -e 'show databases;'
++--------------------+
+| Database           |
++--------------------+
+| example            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sample             |
+| sys                |
+| vk                 |
++--------------------+
+meskalina@meskalina-VirtualBox:~$ mysql -e 'use vk; show tables;'
++---------------------+
+| Tables_in_vk        |
++---------------------+
+| communities         |
+| communities_users   |
+| friendship          |
+| friendship_statuses |
+| media               |
+| media_types         |
+| messages            |
+| profiles            |
+| users               |
++---------------------+
